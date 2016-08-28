@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Impersonatr</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body ng-app="app" ng-csp ng-controller="HomeController">
+    <h3> Impersonatr <small> {{origin}} </small> </h3>
+
+    <div class="state" ng-repeat="state in states track by $index" ng-click="loadState(state)">
+
+      <div ng-if="!state.editMode">{{state.name}}
+      <a ng-click="state.editMode = true; $event.stopPropagation()"><i class="glyphicon glyphicon-edit"> </i></a>
+      <a ng-click="deleteState(state); $event.stopPropagation()" class="pull-right"><i class="glyphicon glyphicon-remove-circle"></i></a>
+</div>
+      <div ng-if="state.editMode">
+        <input class="form-control" ng-model="state.name">
+
+        <button ng-click="updateState(state); $event.stopPropagation()" class="btn btn-primary">Save</button>
+
+        <a ng-click="deleteState(state)" class="pull-right"><i class="glyphicon glyphicon-remove-circle"></i></a>
+
+      </div>
+      
+    </div>
+
+    <div style="text-align: center; margin: 5px">
+      <div class="btn-group" role="group" aria-label="...">
+      <a class="btn btn-primary" ng-click="saveState()">Save Current Session</a>
+      <a class="btn btn-danger" ng-click="clearSession()">Clear Current Session</a>
+      </div>
+    </div>
+
+    <hr style="margin: 6px">
+
+    <a ng-click="openInTab('https://c0nrad.io')"> Made with &#9825; by c0nrad.io </a>
+
+    <script src="angular.min.js"> </script>
+    <script src="underscore.js"> </script>
+    <script src="moment.js"></script>
+    <script src="uuid.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+

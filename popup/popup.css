@@ -1,0 +1,13 @@
+body {
+  width: 400px;
+}
+
+.state {
+  border: 1px solid;
+  padding: 5px;
+}
+
+.state:hover {
+  border: 2px solid;
+  cursor: pointer;
+}
